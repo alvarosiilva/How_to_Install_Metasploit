@@ -9,7 +9,7 @@ This repository provides an easy-to-use script for quickly installing Netflix, e
 
    ```bash
    git clone https://github.com/alvarosiilva/NetflixFastInstaller.git
-   Navigate to the project directory
+   
 After cloning, navigate to the newly created directory:
 
 bash
@@ -22,11 +22,6 @@ Execute the installation script to automatically set up Netflix:
 bash
 
     ./install_netflix.sh
-
-    The script will take care of downloading any necessary dependencies and configuring everything for you.
-
-    Enjoy Netflix!
-    Once the installation is complete, you're ready to enjoy Netflix on your device!
 
 Requirements
 
