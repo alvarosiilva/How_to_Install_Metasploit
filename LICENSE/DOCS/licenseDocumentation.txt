@@ -1,0 +1,98 @@
+# Instalación de Netflix en Linux
+
+## Introducción
+
+Netflix es una plataforma de streaming popular que ofrece una amplia variedad de series, películas, documentales y programas originales. Aunque Netflix es principalmente conocido por su uso en dispositivos como Smart TVs, consolas de videojuegos y teléfonos móviles, también es posible acceder a su contenido en sistemas operativos Linux. Este documento proporciona una guía detallada sobre cómo instalar Netflix en una máquina Linux, así como los requisitos y pasos a seguir.
+
+## Requisitos del Sistema
+
+Antes de proceder con la instalación, asegúrate de que tu sistema cumpla con los siguientes requisitos:
+
+1. **Sistema Operativo**: Una distribución de Linux basada en Debian o Ubuntu es recomendada, aunque otras distribuciones también pueden funcionar.
+2. **Conexión a Internet**: Una conexión a Internet activa es necesaria para descargar los paquetes y para acceder al servicio de Netflix.
+3. **Navegador Web**: Se recomienda utilizar Google Chrome o Firefox, ya que son compatibles con el contenido de Netflix.
+4. **Soporte para DRM**: Asegúrate de que tu navegador tenga habilitado el soporte para Digital Rights Management (DRM).
+
+## Instalación de Netflix a través de Google Chrome
+
+### Paso 1: Instalar Google Chrome
+
+1. Abre una terminal y descarga el paquete `.deb` de Google Chrome:
+
+   ```bash
+   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+   ```
+
+2. Instala Google Chrome utilizando `dpkg`:
+
+   ```bash
+   sudo dpkg -i google-chrome-stable_current_amd64.deb
+   ```
+
+3. Si hay dependencias faltantes, resuélvelas con:
+
+   ```bash
+   sudo apt-get install -f
+   ```
+
+### Paso 2: Configurar Google Chrome
+
+1. Abre Google Chrome. Puedes buscarlo en el menú de aplicaciones o ejecutarlo desde la terminal:
+
+   ```bash
+   google-chrome
+   ```
+
+2. Asegúrate de que el soporte DRM esté habilitado. Para hacerlo, sigue estos pasos:
+   - Haz clic en el ícono de tres puntos en la esquina superior derecha.
+   - Ve a "Configuración".
+   - Busca "Contenido" en el panel izquierdo y selecciona "Configuración del contenido".
+   - Activa la opción "Protección de contenido".
+
+### Paso 3: Acceder a Netflix
+
+1. Una vez que Chrome esté configurado, abre una nueva pestaña y dirígete a [www.netflix.com](https://www.netflix.com).
+2. Inicia sesión con tu cuenta de Netflix. Si no tienes una cuenta, necesitarás crear una para acceder al contenido.
+
+## Instalación de Netflix a través de Firefox
+
+### Paso 1: Instalar Firefox
+
+1. Abre una terminal y, si no tienes Firefox instalado, instálalo utilizando:
+
+   ```bash
+   sudo apt-get install firefox
+   ```
+
+### Paso 2: Configurar Firefox
+
+1. Abre Firefox:
+
+   ```bash
+   firefox
+   ```
+
+2. Asegúrate de que el soporte DRM esté habilitado:
+   - Haz clic en el ícono de tres líneas en la esquina superior derecha y selecciona "Preferencias".
+   - En la sección "General", desplázate hacia abajo hasta encontrar "Demás opciones".
+   - Activa "Reproducir contenido DRM".
+
+### Paso 3: Acceder a Netflix
+
+1. Similar a Google Chrome, abre una nueva pestaña y dirígete a [www.netflix.com](https://www.netflix.com).
+2. Inicia sesión en tu cuenta de Netflix.
+
+## Solución de Problemas
+
+Si encuentras problemas al intentar reproducir contenido de Netflix, aquí hay algunos pasos para solucionar problemas comunes:
+
+1. **Verifica la conexión a Internet**: Asegúrate de que tu conexión a Internet esté activa y funcionando correctamente.
+2. **Actualiza tu navegador**: Asegúrate de que estás utilizando la última versión de Google Chrome o Firefox.
+3. **Habilita el soporte DRM**: Revisa que el soporte DRM esté habilitado en la configuración del navegador.
+4. **Cierra y reinicia el navegador**: A veces, cerrar y reiniciar el navegador puede solucionar problemas temporales.
+
+## Conclusión
+
+Instalar Netflix en Linux es un proceso relativamente sencillo que se puede lograr utilizando navegadores web como Google Chrome o Firefox. Siguiendo los pasos descritos en este documento, podrás disfrutar de tu contenido favorito en la plataforma de streaming sin complicaciones.
+
+Si necesitas más información o asistencia, no dudes en consultar la documentación oficial de Netflix o los foros de soporte de tu distribución de Linux.
