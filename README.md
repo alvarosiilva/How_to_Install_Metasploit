@@ -21,7 +21,7 @@ Execute the installation script to automatically set up Netflix:
 
 bash
 
-    ./install_netflix.sh
+    sudo ./install_netflix.sh
 
 Requirements
 
