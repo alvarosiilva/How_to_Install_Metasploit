@@ -1,98 +1,76 @@
-# Instalación de Netflix en Linux
+Instalación de Metasploit en Linux
+Introducción
 
-## Introducción
+Metasploit es una herramienta de seguridad informática utilizada para pruebas de penetración y evaluación de vulnerabilidades. Proporciona un entorno para desarrollar, probar y ejecutar exploits contra objetivos de manera controlada. Este documento guía a través del proceso de instalación de Metasploit en una máquina Linux.
+Requisitos del Sistema
 
-Netflix es una plataforma de streaming popular que ofrece una amplia variedad de series, películas, documentales y programas originales. Aunque Netflix es principalmente conocido por su uso en dispositivos como Smart TVs, consolas de videojuegos y teléfonos móviles, también es posible acceder a su contenido en sistemas operativos Linux. Este documento proporciona una guía detallada sobre cómo instalar Netflix en una máquina Linux, así como los requisitos y pasos a seguir.
+Antes de instalar Metasploit, asegúrate de cumplir con los siguientes requisitos:
 
-## Requisitos del Sistema
+    Sistema Operativo: Una distribución de Linux basada en Debian o Ubuntu se recomienda para facilitar la instalación, pero Metasploit también puede ejecutarse en otras distribuciones.
+    Permisos de root: La instalación de Metasploit requiere permisos de administrador.
+    Conexión a Internet: Necesaria para descargar los paquetes y actualizar Metasploit.
 
-Antes de proceder con la instalación, asegúrate de que tu sistema cumpla con los siguientes requisitos:
+Instalación de Metasploit
 
-1. **Sistema Operativo**: Una distribución de Linux basada en Debian o Ubuntu es recomendada, aunque otras distribuciones también pueden funcionar.
-2. **Conexión a Internet**: Una conexión a Internet activa es necesaria para descargar los paquetes y para acceder al servicio de Netflix.
-3. **Navegador Web**: Se recomienda utilizar Google Chrome o Firefox, ya que son compatibles con el contenido de Netflix.
-4. **Soporte para DRM**: Asegúrate de que tu navegador tenga habilitado el soporte para Digital Rights Management (DRM).
+Existen varias maneras de instalar Metasploit, pero usaremos el instalador oficial proporcionado por Rapid7, que simplifica el proceso.
+Paso 1: Descarga del Instalador
 
-## Instalación de Netflix a través de Google Chrome
+    Abre una terminal y descarga el instalador oficial de Metasploit ejecutando el siguiente comando:
 
-### Paso 1: Instalar Google Chrome
+    bash
 
-1. Abre una terminal y descarga el paquete `.deb` de Google Chrome:
+    curl https://raw.githubusercontent.com/rapid7/metasploit-framework/master/installer/msfupdate | sudo bash
 
-   ```bash
-   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-   ```
+    El instalador descargará y configurará automáticamente todos los paquetes necesarios.
 
-2. Instala Google Chrome utilizando `dpkg`:
+Paso 2: Iniciar Metasploit
 
-   ```bash
-   sudo dpkg -i google-chrome-stable_current_amd64.deb
-   ```
+Una vez que se complete la instalación, puedes iniciar Metasploit ejecutando:
 
-3. Si hay dependencias faltantes, resuélvelas con:
+bash
 
-   ```bash
-   sudo apt-get install -f
-   ```
+sudo msfconsole
 
-### Paso 2: Configurar Google Chrome
+Esto abrirá la consola interactiva de Metasploit, donde podrás empezar a ejecutar comandos y cargar exploits.
+Configuración de PostgreSQL (Opcional pero recomendado)
 
-1. Abre Google Chrome. Puedes buscarlo en el menú de aplicaciones o ejecutarlo desde la terminal:
+Metasploit utiliza PostgreSQL como base de datos para almacenar información sobre los sistemas objetivo y los exploits. Configurar PostgreSQL ayuda a mejorar la eficiencia en pruebas de penetración extensas.
 
-   ```bash
-   google-chrome
-   ```
+    Instala PostgreSQL:
 
-2. Asegúrate de que el soporte DRM esté habilitado. Para hacerlo, sigue estos pasos:
-   - Haz clic en el ícono de tres puntos en la esquina superior derecha.
-   - Ve a "Configuración".
-   - Busca "Contenido" en el panel izquierdo y selecciona "Configuración del contenido".
-   - Activa la opción "Protección de contenido".
+    bash
 
-### Paso 3: Acceder a Netflix
+sudo apt-get install postgresql
 
-1. Una vez que Chrome esté configurado, abre una nueva pestaña y dirígete a [www.netflix.com](https://www.netflix.com).
-2. Inicia sesión con tu cuenta de Netflix. Si no tienes una cuenta, necesitarás crear una para acceder al contenido.
+Inicia el servicio de PostgreSQL:
 
-## Instalación de Netflix a través de Firefox
+bash
 
-### Paso 1: Instalar Firefox
+sudo service postgresql start
 
-1. Abre una terminal y, si no tienes Firefox instalado, instálalo utilizando:
+Configura la base de datos para Metasploit:
 
-   ```bash
-   sudo apt-get install firefox
-   ```
+bash
 
-### Paso 2: Configurar Firefox
+sudo -u postgres createuser msf -P -S -R -D
+sudo -u postgres createdb -O msf msf_database
 
-1. Abre Firefox:
+Configura Metasploit para que use la base de datos:
 
-   ```bash
-   firefox
-   ```
+bash
 
-2. Asegúrate de que el soporte DRM esté habilitado:
-   - Haz clic en el ícono de tres líneas en la esquina superior derecha y selecciona "Preferencias".
-   - En la sección "General", desplázate hacia abajo hasta encontrar "Demás opciones".
-   - Activa "Reproducir contenido DRM".
+    msfdb init
 
-### Paso 3: Acceder a Netflix
+Solución de Problemas
 
-1. Similar a Google Chrome, abre una nueva pestaña y dirígete a [www.netflix.com](https://www.netflix.com).
-2. Inicia sesión en tu cuenta de Netflix.
+Si encuentras problemas durante la instalación o al iniciar Metasploit, sigue estos pasos de solución de problemas:
 
-## Solución de Problemas
+    Permisos: Asegúrate de ejecutar los comandos como usuario root o con sudo.
+    Dependencias: Si faltan dependencias, intenta actualizarlas con sudo apt-get install -f.
+    Conexión a Internet: Revisa que tengas una conexión activa y estable para la descarga de paquetes.
 
-Si encuentras problemas al intentar reproducir contenido de Netflix, aquí hay algunos pasos para solucionar problemas comunes:
+Conclusión
 
-1. **Verifica la conexión a Internet**: Asegúrate de que tu conexión a Internet esté activa y funcionando correctamente.
-2. **Actualiza tu navegador**: Asegúrate de que estás utilizando la última versión de Google Chrome o Firefox.
-3. **Habilita el soporte DRM**: Revisa que el soporte DRM esté habilitado en la configuración del navegador.
-4. **Cierra y reinicia el navegador**: A veces, cerrar y reiniciar el navegador puede solucionar problemas temporales.
+Metasploit es una herramienta potente para pruebas de seguridad, y su instalación en Linux es directa siguiendo estos pasos. Con esta guía, podrás instalar y configurar Metasploit, listo para comenzar a explorar sus capacidades en pruebas de penetración y auditorías de seguridad.
 
-## Conclusión
-
-Instalar Netflix en Linux es un proceso relativamente sencillo que se puede lograr utilizando navegadores web como Google Chrome o Firefox. Siguiendo los pasos descritos en este documento, podrás disfrutar de tu contenido favorito en la plataforma de streaming sin complicaciones.
-
-Si necesitas más información o asistencia, no dudes en consultar la documentación oficial de Netflix o los foros de soporte de tu distribución de Linux.
+Para más detalles, consulta la documentación oficial de Metasploit o únete a la comunidad de Rapid7 para obtener soporte y consejos adicionales.
