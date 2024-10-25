@@ -1,4 +1,4 @@
-How To Install Metasploit
+# How To Install Metasploit
 
 This repository provides an easy-to-use script for quickly installing Metasploit, ensuring you have everything you need in just a few steps. Ideal for users who want a hassle-free setup without manually configuring everything.
 How to Use:
