@@ -1,76 +1,76 @@
-Instalación de Metasploit en Linux
-Introducción
+Installing Metasploit on Linux
+Introduction
 
-Metasploit es una herramienta de seguridad informática utilizada para pruebas de penetración y evaluación de vulnerabilidades. Proporciona un entorno para desarrollar, probar y ejecutar exploits contra objetivos de manera controlada. Este documento guía a través del proceso de instalación de Metasploit en una máquina Linux.
-Requisitos del Sistema
+Metasploit is a cybersecurity tool widely used for penetration testing and vulnerability assessment. It provides an environment for developing, testing, and executing exploits against specific targets in a controlled manner. This guide walks you through the steps to install Metasploit on a Linux machine.
+System Requirements
 
-Antes de instalar Metasploit, asegúrate de cumplir con los siguientes requisitos:
+Before installing Metasploit, ensure your system meets the following requirements:
 
-    Sistema Operativo: Una distribución de Linux basada en Debian o Ubuntu se recomienda para facilitar la instalación, pero Metasploit también puede ejecutarse en otras distribuciones.
-    Permisos de root: La instalación de Metasploit requiere permisos de administrador.
-    Conexión a Internet: Necesaria para descargar los paquetes y actualizar Metasploit.
+    Operating System: A Debian or Ubuntu-based Linux distribution is recommended for easy installation, although Metasploit can also run on other distributions.
+    Root Privileges: Installation requires administrative privileges.
+    Internet Connection: Required to download packages and keep Metasploit updated.
 
-Instalación de Metasploit
+Installing Metasploit
 
-Existen varias maneras de instalar Metasploit, pero usaremos el instalador oficial proporcionado por Rapid7, que simplifica el proceso.
-Paso 1: Descarga del Instalador
+There are multiple ways to install Metasploit, but we’ll use the official installer provided by Rapid7, which simplifies the process.
+Step 1: Download the Installer
 
-    Abre una terminal y descarga el instalador oficial de Metasploit ejecutando el siguiente comando:
+    Open a terminal and download the official Metasploit installer by running:
 
     bash
 
     curl https://raw.githubusercontent.com/rapid7/metasploit-framework/master/installer/msfupdate | sudo bash
 
-    El instalador descargará y configurará automáticamente todos los paquetes necesarios.
+    The installer will automatically download and configure all the necessary packages.
 
-Paso 2: Iniciar Metasploit
+Step 2: Launch Metasploit
 
-Una vez que se complete la instalación, puedes iniciar Metasploit ejecutando:
+Once the installation is complete, you can start Metasploit by running:
 
 bash
 
 sudo msfconsole
 
-Esto abrirá la consola interactiva de Metasploit, donde podrás empezar a ejecutar comandos y cargar exploits.
-Configuración de PostgreSQL (Opcional pero recomendado)
+This opens Metasploit’s interactive console, where you can begin executing commands and loading exploits.
+Configuring PostgreSQL (Optional but Recommended)
 
-Metasploit utiliza PostgreSQL como base de datos para almacenar información sobre los sistemas objetivo y los exploits. Configurar PostgreSQL ayuda a mejorar la eficiencia en pruebas de penetración extensas.
+Metasploit uses PostgreSQL as a database to store target system information and exploit data. Configuring PostgreSQL enhances efficiency when conducting extensive penetration tests.
 
-    Instala PostgreSQL:
+    Install PostgreSQL:
 
     bash
 
 sudo apt-get install postgresql
 
-Inicia el servicio de PostgreSQL:
+Start the PostgreSQL Service:
 
 bash
 
 sudo service postgresql start
 
-Configura la base de datos para Metasploit:
+Configure the Database for Metasploit:
 
 bash
 
 sudo -u postgres createuser msf -P -S -R -D
 sudo -u postgres createdb -O msf msf_database
 
-Configura Metasploit para que use la base de datos:
+Link Metasploit to the Database:
 
 bash
 
     msfdb init
 
-Solución de Problemas
+Troubleshooting
 
-Si encuentras problemas durante la instalación o al iniciar Metasploit, sigue estos pasos de solución de problemas:
+If you encounter any issues during installation or when launching Metasploit, follow these troubleshooting steps:
 
-    Permisos: Asegúrate de ejecutar los comandos como usuario root o con sudo.
-    Dependencias: Si faltan dependencias, intenta actualizarlas con sudo apt-get install -f.
-    Conexión a Internet: Revisa que tengas una conexión activa y estable para la descarga de paquetes.
+    Permissions: Ensure you’re running commands as root or with sudo.
+    Dependencies: If there are missing dependencies, try resolving them with sudo apt-get install -f.
+    Internet Connection: Verify you have a stable connection to download packages.
 
-Conclusión
+Conclusion
 
-Metasploit es una herramienta potente para pruebas de seguridad, y su instalación en Linux es directa siguiendo estos pasos. Con esta guía, podrás instalar y configurar Metasploit, listo para comenzar a explorar sus capacidades en pruebas de penetración y auditorías de seguridad.
+Metasploit is a powerful tool for security testing, and installation on Linux is straightforward when following these steps. With this guide, you’ll be able to install and configure Metasploit, ready to explore its capabilities for penetration testing and security audits.
 
-Para más detalles, consulta la documentación oficial de Metasploit o únete a la comunidad de Rapid7 para obtener soporte y consejos adicionales.
+For more details, consult the official Metasploit documentation or join the Rapid7 community for additional support and advice.
